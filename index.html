@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance AI 🧭</title>
+    <style>
+        /* Basic CSS for Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box; /* Important for padding */
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #results {
+            margin-top: 30px;
+            text-align: left;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            display: none; /* Hidden by default */
+        }
+        
+        #results h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Career Guidance AI 🧭</h1>
+        <p>Enter your skills and interests to discover potential career paths.</p>
+        
+        <form id="career-form">
+            <div class="form-group">
+                <label for="skills">What are your top skills?</label>
+                <textarea id="skills" name="skills" placeholder="e.g., python, public speaking, graphic design, data analysis"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="interests">What are your interests?</label>
+                <textarea id="interests" name="interests" placeholder="e.g., technology, helping people, art, science, finance"></textarea>
+            </div>
+            
+            <button type="submit">Get Career Suggestions</button>
+        </form>
+        
+        <div id="results">
+            <h3>Based on your input, here are some suggestions:</h3>
+            <p id="career-suggestions"></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission and simulate AI response
+        document.getElementById('career-form').addEventListener('submit', function(event) {
+            // Prevent the form from actually submitting and reloading the page
+            event.preventDefault(); 
+            
+            // Get user input
+            const skills = document.getElementById('skills').value.toLowerCase();
+            const interests = document.getElementById('interests').value.toLowerCase();
+            
+            // --- This is a very simple simulation of an AI brain ---
+            // A real application would send this data to a server with a machine learning model.
+            let suggestion = "We couldn't determine a specific path. Try adding more details!";
+
+            if (skills.includes('python') || skills.includes('data') || interests.includes('technology')) {
+                suggestion = "<strong>Software Developer or Data Analyst:</strong> Your skills in Python and interest in technology point towards a career in software development. If you enjoy working with numbers, a Data Analyst role would also be a great fit.";
+            } else if (skills.includes('design') || interests.includes('art')) {
+                suggestion = "<strong>Graphic Designer or UI/UX Designer:</strong> Your creative interests and design skills are perfect for a career in visual design. Consider specializing in user interfaces (UI) for websites and apps.";
+            } else if (skills.includes('speaking') || interests.includes('helping people')) {
+                suggestion = "<strong>Marketing Manager or Social Worker:</strong> Your communication skills are valuable in marketing. If your passion is helping others directly, a career in social work or counseling could be very rewarding.";
+            } else if (interests.includes('finance') || skills.includes('analysis')) {
+                 suggestion = "<strong>Financial Analyst or Accountant:</strong> Your analytical skills and interest in finance suggest a career in the financial sector. You could help companies make smart investment decisions or manage their finances.";
+            }
+
+            // --- End of AI simulation ---
+            
+            // Display the results
+            const resultsDiv = document.getElementById('results');
+            const suggestionsP = document.getElementById('career-suggestions');
+            
+            suggestionsP.innerHTML = suggestion; // Use innerHTML to render the <strong> tag
+            resultsDiv.style.display = 'block'; // Make the results section visible
+        });
+    </script>
+
+</body>
+</html>
